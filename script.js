@@ -138,3 +138,28 @@ nextBtn.onclick = () => {
 
 // Load the first question
 loadQuestion();
+
+// ------------------ Tap / Click to Flip Cards (Mobile + Desktop) ------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        // Make card keyboard accessible
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+
+        // Toggle flip on tap/click
+        card.addEventListener("click", () => {
+            card.classList.toggle("is-flipped");
+        });
+
+        // Toggle flip using keyboard (Enter + Space)
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                card.classList.toggle("is-flipped");
+            }
+        });
+    });
+});
