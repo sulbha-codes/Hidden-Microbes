@@ -125,6 +125,28 @@ header p {
     text-align: center;
 }
 
+/* Enable flip on tap for mobile */
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Make card tappable on touch devices */
+.card {
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile hint */
+@media (max-width: 600px) {
+    .card::after {
+        content: "Tap to flip";
+        font-size: 0.7rem;
+        margin-top: 5px;
+        color: #666;
+        display: block;
+        text-align: center;
+    }
+}
 /* ---------------- Tips Section ---------------- */
 .tips ul {
     list-style: none;
