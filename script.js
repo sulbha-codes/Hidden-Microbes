@@ -32,8 +32,33 @@ function generateCards(containerId, bacteriaArray) {
     });
 }
 
-generateCards("good-cards", goodBacteria);
-generateCards("bad-cards", badBacteria);
+document.addEventListener("DOMContentLoaded", () => {
+    
+    generateCards("good-cards", goodBacteria);
+    generateCards("bad-cards", badBacteria);
+
+    //microbe of the day
+    displayMicrobeOfDay();
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+
+        card.addEventListener("click", () => {
+            card.classList.toggle("is-flipped");
+        });
+
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                card.classList.toggle("is-flipped");
+            }
+        });
+    });
+});
+
 
 // ------------------ Microbe of the Day ------------------
 const allMicrobes = [...goodBacteria, ...badBacteria];
@@ -45,7 +70,7 @@ function displayMicrobeOfDay() {
         <p>${random.info}</p>
     `;
 }
-displayMicrobeOfDay();
+
 
 // ------------------ Light/Dark Mode ------------------
 const modeBtn = document.getElementById("mode-toggle");
@@ -139,27 +164,3 @@ nextBtn.onclick = () => {
 // Load the first question
 loadQuestion();
 
-// ------------------ Tap / Click to Flip Cards (Mobile + Desktop) ------------------
-
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".card");
-
-    cards.forEach(card => {
-        // Make card keyboard accessible
-        card.setAttribute("tabindex", "0");
-        card.setAttribute("role", "button");
-
-        // Toggle flip on tap/click
-        card.addEventListener("click", () => {
-            card.classList.toggle("is-flipped");
-        });
-
-        // Toggle flip using keyboard (Enter + Space)
-        card.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                card.classList.toggle("is-flipped");
-            }
-        });
-    });
-});
