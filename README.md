@@ -1,5 +1,10 @@
-# 🦠 Hidden Microbes  
+# 🦠 Hidden
+
+https://github.com/user-attachments/assets/dff832c2-5c2b-4d9c-811c-2d60573f0f2c
+
+ Microbes  
 ### 🌱 *“Where the smallest lives tell the biggest stories.”*
+
 
 🔗 **Live Demo:** https://hidden-microbes.vercel.app/
 
